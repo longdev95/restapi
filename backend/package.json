@@ -1,5 +1,5 @@
 {
-  "name": "nodejs-complete-guide",
+  "name": "nodejs-restapi",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -7,11 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon app.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://git-codecommit.us-east-1.amazonaws.com/v1/repos/udemy-course-nodejs-complete"
-  },
-  "author": "",
+  "author": "longdev95",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.3",
