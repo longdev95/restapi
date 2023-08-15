@@ -20,13 +20,22 @@ exports.createPost = (req, res, next) => {
     throw error
   }
 
+  console.log(req.file)
+
+  if (!req.file) {
+    const err = new Error('Missing file image!')
+    err.statusCode = 422
+    throw err
+  }
+
+  const imageUrl = req.file.path;
   const title = req.body.title;
   const content = req.body.content;
 
   // Create post in db
   const post = new Post({
     title: title,
-    imageUrl: '/images',
+    imageUrl: imageUrl,
     content: content,
     creator: { name: 'Long Nguyen' }
   })

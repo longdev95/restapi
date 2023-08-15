@@ -105,23 +105,24 @@ class Feed extends Component {
     this.setState({
       editLoading: true
     });
+
     // Set up data (with image!)
+    console.log(postData)
+    let formData = new FormData();
+    formData.append('title', postData.title)
+    formData.append('content', postData.content)
+    formData.append('image', postData.image)
+
     let url = 'http://localhost:8080/feed/post';
     let method = 'POST';
     if (this.state.editPost) {
       url = 'URL';
       // method = 'PATCH';
     }
-
+    console.log(formData)
     fetch(url, {
       method: method,
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        title: postData.title,
-        content: postData.content
-      })
+      body: formData,
     })
       .then(res => {
         console.log(res)
@@ -136,6 +137,7 @@ class Feed extends Component {
           _id: resData.post._id,
           title: resData.post.title,
           content: resData.post.content,
+          imageUrl: resData.post.imageUrl,
           creator: resData.post.creator,
           createdAt: resData.post.createdAt
         };
